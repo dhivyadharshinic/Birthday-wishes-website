@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Tutu</title>
+
+<style>
+:root{
+ --bg1:#e1496c;
+ --bg2:#a7c9bc;
+ --gold:#c3b1e5;
+}
+
+body{
+ margin:0;
+ font-family:Segoe UI,sans-serif;
+ text-align:center;
+ background:linear-gradient(135deg,var(--bg1),var(--bg2));
+ overflow:hidden;
+ color:#333;
+}
+
+h1{
+ margin-top:20px;
+ font-size:3em;
+ color:var(--gold);
+ text-shadow:0 0 20px rgba(247,200,115,.8);
+}
+
+.name{
+ font-size:2.8em;
+ font-weight:bold;
+ background:linear-gradient(90deg,#f7c873,#ff9a9e,#f7c873);
+ -webkit-background-clip:text;
+ color:transparent;
+ animation:shine 3s infinite;
+}
+
+@keyframes shine{
+ from{background-position:0%}
+ to{background-position:200%}
+}
+
+.message{
+ max-width:500px;
+ margin:15px auto;
+ font-size:1.2em;
+}
+
+.photo{
+ width:200px;
+ height:200px;
+ border-radius:50%;
+ border:6px solid var(--gold);
+ object-fit:cover;
+}
+
+.cake{
+ font-size:80px;
+ animation:bounce 2s infinite;
+}
+
+@keyframes bounce{
+ 50%{transform:translateY(-15px)}
+}
+
+.balloon{
+ position:absolute;
+ bottom:-100px;
+ font-size:40px;
+ animation:float 8s linear infinite;
+}
+
+@keyframes float{
+ to{transform:translateY(-120vh)}
+}
+
+.firework{
+ position:absolute;
+ width:8px;
+ height:8px;
+ border-radius:50%;
+ animation:boom 1.2s ease-out forwards;
+}
+
+@keyframes boom{
+ from{transform:scale(.2);opacity:1}
+ to{transform:scale(6);opacity:0}
+}
+
+.music-btn{
+ position:fixed;
+ bottom:80px;
+ right:20px;
+ background:var(--gold);
+ border:none;
+ padding:12px 18px;
+ border-radius:30px;
+ cursor:pointer;
+}
+
+.share{
+ position:fixed;
+ bottom:20px;
+ right:20px;
+ background:#25D366;
+ color:white;
+ padding:12px 18px;
+ border-radius:30px;
+ text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎉 Happy Birthday 🎉</h1>
+
+<div class="name">Tutu</div>
+
+<div class="Happy Birthday Tutu">
+💌 Wishing you a day full of happiness, love, cake, and beautiful memories ✨
+</div>
+
+<img src="photo.jpg" class="photo">
+
+<div class="cake">🎂</div>
+
+<button class="music-btn" onclick="toggleMusic()">🎶 Music</button>
+
+<a class="share"
+href="https://wa.me/?text=🎉%20Check%20out%20this%20birthday%20website!">
+📱 Share
+</a>
+
+<audio id="music" loop>
+ <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+for(let i=0;i<18;i++){
+ let b=document.createElement("div");
+ b.className="balloon";
+ b.innerHTML="🎈";
+ b.style.left=Math.random()*100+"%";
+ b.style.animationDuration=6+Math.random()*6+"s";
+ document.body.appendChild(b);
+}
+
+setInterval(()=>{
+ let f=document.createElement("div");
+ f.className="firework";
+ f.style.left=Math.random()*100+"%";
+ f.style.top=Math.random()*60+"%";
+ f.style.background=`hsl(${Math.random()*360},100%,60%)`;
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),1200);
+},250);
+
+const music=document.getElementById("music");
+function toggleMusic(){
+ music.paused ? music.play() : music.pause();
+}
+</script>
+
+</body>
+</html>
